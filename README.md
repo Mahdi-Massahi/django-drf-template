@@ -57,7 +57,7 @@ mkdir ./apps/<app-name>
 ```
 2. create django app
 ```bash
-python startapp <app-name> apps/<app-name>
+python manage.py startapp <app-name> apps/<app-name>
 ```
 3. config the `apps.py` file by adding `apps.` prefix to the name variable inside the class.
 4. add `"apps.<app-name>"` into `INSTALLED_APPS` in `core/settings.py`.

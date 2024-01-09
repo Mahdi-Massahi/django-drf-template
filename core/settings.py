@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Take environment variables from .env file
 env = environ.Env()
-env_path = os.path.join(BASE_DIR, "deploy", ".env")
+env_path = os.path.join(BASE_DIR, "environments", "deploy", "backend.env")
 environ.Env.read_env(env_path)
 
 # Quick-start development settings - unsuitable for production
@@ -157,3 +157,6 @@ SWAGGER_SETTINGS = {
         "Bearer": {"type": "apiKey", "name": "Authorization", "in": "header"}
     }
 }
+
+STATIC_URL = "/static/"
+STATIC_ROOT = env.str("STATIC_ROOT", BASE_DIR / "static")

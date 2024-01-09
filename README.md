@@ -26,3 +26,10 @@ python manage.py migrate
 ```bash
 python manage.py runserver
 ```
+
+
+
+create self-signed ssl certification for local deployment
+```bash
+openssl req -x509 -newkey rsa:4096 -keyout deploy/config/ssl/privkey.pem -out deploy/config/ssl/fullchain.pem -days 365 -nodes
+``` 

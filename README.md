@@ -48,3 +48,17 @@ docker-compose up --build -d
 ```
 now the app should be accessible on https://localhost  
 Note: ignore the certification error on the browser
+
+## Implementation
+### Creating new app
+1. create a new folder with your new app's name inside apps directory
+```bash
+mkdir ./apps/<app-name>
+```
+2. create django app
+```bash
+python startapp <app-name> apps/<app-name>
+```
+3. config the `apps.py` file by adding `apps.` prefix to the name variable inside the class.
+4. add `"apps.<app-name>"` into `INSTALLED_APPS` in `core/settings.py`.
+5. restart the django server

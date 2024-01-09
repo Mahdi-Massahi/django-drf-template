@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Take environment variables from .env file
 env = environ.Env()
-env_path = os.path.join(BASE_DIR, "environments", "deploy", "backend.env")
+env_path = os.path.join(BASE_DIR, "deploy", "environments", "backend.env")
 environ.Env.read_env(env_path)
 
 # SECURITY WARNING: keep the secret key used in production secret!

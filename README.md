@@ -1,6 +1,6 @@
-# Budget Management Backend
+# Django Rest Framework (DRF) Application Template
 
-## On Local without Docker
+## Deploy On Local Without Docker
 
 0. you should have the following requirements installed on your machine  
 - python3.11
@@ -34,7 +34,7 @@ python manage.py runserver 8000
 ```
 now the app should be accessible on http://localhost:8000
 
-## On Local with Docker
+## Deploy On Local With Docker
 
 0. you should have `Docker` installed on your machine  
 
@@ -46,5 +46,5 @@ openssl req -x509 -newkey rsa:4096 -keyout deploy/config/ssl/privkey.pem -out de
 ```bash
 docker-compose up --build -d
 ```
-now the app should be accessible on https://localhost
+now the app should be accessible on https://localhost  
 Note: ignore the certification error on the browser

@@ -62,3 +62,13 @@ python manage.py startapp <app-name> apps/<app-name>
 3. config the `apps.py` file by adding `apps.` prefix to the name variable inside the class.
 4. add `"apps.<app-name>"` into `INSTALLED_APPS` in `core/settings.py`.
 5. restart the django server
+
+### Logging 
+create logger as following:
+```python
+import logging
+
+from django.conf import settings
+
+logger = logging.getLogger(settings.LOGGER_NAME)
+```

@@ -133,3 +133,46 @@ SWAGGER_SETTINGS = {
         "Bearer": {"type": "apiKey", "name": "Authorization", "in": "header"}
     }
 }
+
+# Logging
+LOGS_DIRECTORY = BASE_DIR / env.str("LOGS_DIRECTORY", "logs")
+LOGS_DIRECTORY.mkdir(parents=False, exist_ok=True)
+DJANGO_DEBUG_LOG_FILE = LOGS_DIRECTORY / "debug.log"
+Path(DJANGO_DEBUG_LOG_FILE).touch(exist_ok=True)
+LOGGER_NAME = "debugLogger"
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "\n\nTime: {asctime}\nFile: {pathname}\nModule: {module}"
+            "\nFunction: {funcName}\nDetails: {message}\nArgs: {args}\n",
+            "style": "{",
+        },
+        "simple": {
+            "format": "\n{levelname} {asctime} - {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+        LOGGER_NAME: {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": DJANGO_DEBUG_LOG_FILE,
+            "formatter": "verbose",
+            "maxBytes": 1024 * 1024 * 250,
+        },
+    },
+    "loggers": {
+        LOGGER_NAME: {
+            "handlers": [LOGGER_NAME, "console"],
+            "level": "DEBUG",
+            "propagate": True,
+        }
+    },
+}

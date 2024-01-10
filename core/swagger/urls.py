@@ -1,4 +1,6 @@
 from django.urls import path, re_path
+from django.views.static import serve
+from django.conf import settings
 
 from .views import schema_view
 
@@ -18,5 +20,12 @@ urlpatterns = [
         "redoc/",
         schema_view.with_ui("redoc", cache_timeout=0),
         name="schema-redoc",
+    ),
+    re_path(
+        route=r"^static/(?P<path>.*)$",
+        view=serve,
+        kwargs={
+            "document_root": settings.STATIC_ROOT,
+        },
     ),
 ]

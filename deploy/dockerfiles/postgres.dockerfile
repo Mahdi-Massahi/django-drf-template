@@ -1,6 +1,6 @@
 FROM postgres:14.7-alpine3.17
 
-COPY deploy/entrypoints/init-db.sh /docker-entrypoint-initdb.d/
+COPY deploy/entrypoints/postgres.sh /docker-entrypoint-initdb.d/
 
 VOLUME /var/lib/postgresql/data/
 
